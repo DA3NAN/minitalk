@@ -6,7 +6,7 @@
 /*   By: aait-mal <aait-mal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:01:53 by aait-mal          #+#    #+#             */
-/*   Updated: 2022/12/17 19:35:23 by aait-mal         ###   ########.fr       */
+/*   Updated: 2022/12/17 21:30:35 by aait-mal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handler_response(int c)
 {
 	if (c == 30)
 	{
-		ft_printf("Server : OK\n");
+		ft_printf("\n==> Server : OK\n");
 	}
 }
 
