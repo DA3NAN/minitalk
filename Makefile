@@ -6,7 +6,7 @@
 #    By: aait-mal <aait-mal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 20:54:54 by aait-mal          #+#    #+#              #
-#    Updated: 2022/12/21 14:17:07 by aait-mal         ###   ########.fr        #
+#    Updated: 2022/12/21 15:57:24 by aait-mal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,21 +34,21 @@ printf :
 	@echo "\033[0;34mMaking ft_printf...\033[m"
 	@cd $(PRINTF) && make && mv libftprintf.a ..
 
-client : $(SRC_CLIENT) minitalk.h
+client : libft printf $(SRC_CLIENT) minitalk.h
 	@echo "Making exec 'client'..."
 	@cc $(FLAGS) $(SRC_CLIENT) libft.a libftprintf.a -o client
 
-server : $(SRC_SERVER) minitalk.h
+server : libft printf $(SRC_SERVER) minitalk.h
 	@echo "Making exec 'server'..."
 	@cc $(FLAGS) $(SRC_SERVER) libft.a libftprintf.a -o server
 
 bonus : all client_bonus server_bonus
 
-client_bonus : $(SRC_CLIENT_BONUS) minitalk.h
+client_bonus : libft printf $(SRC_CLIENT_BONUS) minitalk.h
 	@echo "Making exec 'client' for bonus..."
 	@cc $(FLAGS) $(SRC_CLIENT_BONUS) libft.a libftprintf.a -o client_bonus
 
-server_bonus : $(SRC_SERVER_BONUS) minitalk.h
+server_bonus : libft printf $(SRC_SERVER_BONUS) minitalk.h
 	@echo "Making exec 'server' for bonus..."
 	@cc $(FLAGS) $(SRC_SERVER_BONUS) libft.a libftprintf.a -o server_bonus
 
