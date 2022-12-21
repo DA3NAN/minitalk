@@ -6,13 +6,13 @@
 /*   By: aait-mal <aait-mal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:01:08 by aait-mal          #+#    #+#             */
-/*   Updated: 2022/12/17 19:28:31 by aait-mal         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:28:10 by aait-mal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	sigusr_handler(int signum, siginfo_t *info, void *context)
+static void	sigusr_handler(int signum, siginfo_t *info, void *context)
 {
 	static unsigned char	c = 0;
 	static int				i = 7;
@@ -27,7 +27,7 @@ void	sigusr_handler(int signum, siginfo_t *info, void *context)
 		i = 7;
 		pid_sender = info->si_pid;
 	}
-	if (signum == 30)
+	if (signum == SIGUSR1)
 		c |= (1 << i);
 	if (i == 0)
 	{

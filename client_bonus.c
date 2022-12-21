@@ -6,21 +6,38 @@
 /*   By: aait-mal <aait-mal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 13:01:53 by aait-mal          #+#    #+#             */
-/*   Updated: 2022/12/17 21:30:35 by aait-mal         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:28:19 by aait-mal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handler_response(int c)
+static void	handler_response(int c)
 {
-	if (c == 30)
+	if (c == SIGUSR1)
 	{
 		ft_printf("\n==> Server : OK\n");
 	}
 }
 
-void	char_bin(char *p, int c)
+static int	check_valid_pid(char *p)
+{
+	int	i;
+
+	i = 0;
+	while (p[i])
+	{
+		if (ft_isdigit(p[i]))
+			i++;
+		else
+			return (0);
+	}
+	if (ft_atoi(p) < 0)
+		return (0);
+	return (1);
+}
+
+static void	char_bin(char *p, int c)
 {
 	int		i;
 
@@ -38,8 +55,8 @@ void	char_bin(char *p, int c)
 
 int	main(int argc, char **argv)
 {
-	if (argc < 3)
-		ft_printf("Please include the server pid and the message!");
+	if (argc != 3 || !check_valid_pid(argv[1]))
+		ft_printf("Please include a valid pid and one message!");
 	else
 	{
 		while (*argv[2])
